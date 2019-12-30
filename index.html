@@ -13,6 +13,18 @@
 </body>
 
 <script>
+    var firebaseConfig = {
+    apiKey: "AIzaSyBW02PuBapen2k0vET5lQfuatrPVlvasoo",
+    authDomain: "task-9619c.firebaseapp.com",
+    databaseURL: "https://task-9619c.firebaseio.com",
+    projectId: "task-9619c",
+    storageBucket: "task-9619c.appspot.com",
+    messagingSenderId: "524155971528",
+    appId: "1:524155971528:web:0dace86eb8bb719ebcc2fd",
+    measurementId: "G-JT2BP8HL5D"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
 
     let fileInput = document.getElementById('ip-file');
 
@@ -31,7 +43,13 @@
             let blob = event.target.result;
 
             // Write your code here
+            
+     var fileName=file.name;
+ 
+    var storageRef=firebase.storage().ref('folder/'+fileName);
+ 
 
+    var uploadTask=storageRef.put(file);
         });
 
         reader.addEventListener('error', (event) => {
